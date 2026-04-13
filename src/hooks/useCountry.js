@@ -2,28 +2,37 @@ import { useState, useEffect } from "react";
 
 function useCountry(code) {
   const [country, setCountry] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // better start false
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!code) return;
 
-    setLoading(true);
-    setError(null);
+    const fetchCountry = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-    fetch(`https://restcountries.com/v3.1/alpha/${code}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Country not found");
-        return res.json();
-      })
-      .then((data) => {
-        setCountry(data[0]); // IMPORTANT
-      })
-      .catch((err) => {
+        const res = await fetch(
+          `https://restcountries.com/v3.1/alpha/${code}`
+        );
+
+        if (!res.ok) {
+          throw new Error("Country not found");
+        }
+
+        const data = await res.json();
+
+        setCountry(data[0] || null); // safe
+      } catch (err) {
         setError(err.message);
         setCountry(null);
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCountry();
   }, [code]);
 
   return { country, loading, error };
