@@ -8,7 +8,64 @@
 
 .header__nav {
   display: flex;
+  gap: 20px;cat >> styles/App.css << 'EOF'
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card__flag {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card__body {
+  padding: 15px;
+}
+
+.card__name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card__body p {
+  font-size: 14px;
+  color: gray;
+}
+
+.card__body span {
+  font-weight: bold;
+  color: black;
+}
+
+.home__status {
+  padding: 20px;
+  color: gray;
+}
+
+.home__status--error {
+  color: red;
+}
+
+EOF
 }
 
 .search-bar {

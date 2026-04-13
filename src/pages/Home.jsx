@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
+import CountryCard from "../components/CountryCard";
 
 function Home() {
   const [query, setQuery] = useState("");
