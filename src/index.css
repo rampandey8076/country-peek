@@ -1,14 +1,22 @@
-* {
-  box-sizing: border-box;
+:root {
+  --bg: #f5f5f5;
+  --text: #222;
+  --card-bg: #ffffff;
+  --header-bg: #0077ff;
+  --input-border: #ccc;
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a2e;
+  --text: #eee;
+  --card-bg: #2a2a3e;
+  --header-bg: #111;
+  --input-border: #555;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
+  font-family: sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
